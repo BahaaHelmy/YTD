@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<title>
+    Prediction Model
+</title>
+<meta name="description" content="Prediction model"/>
+<style>
+
+.diccc33{
+align-items: center;
+background-color:  #C84B31;
+text-align: center;
+border-radius: 5%;
+}
+.diccc44{
+align-items: center;
+background-color:  #2D4263;
+text-align: center;
+border-radius: 5%;
+}
+
+.diccc{
+align-items: center;
+background-color:  #181D31;
+text-align: center;
+   margin-top: 250px;
+  height: 100%;
+}
+
+
+.diccc2{
+background-color: #35858B;
+text-align: center;
+border-radius: 50%;
+align-items: center;
+}
+.ss{
+    border-radius: 50%;
+}
+.heads{
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: blanchedalmond;
+}
+
+.para{
+    color: #ffffff;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    align-items: center;
+    text-align: justify;
+
+}
+.para2{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    align-items: center;
+    background-color: midnightblue;
+}
+
+.p2{
+    color: #FEFBF6;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size:1.2cm;
+    text-align: center;
+
+}
+.p22{
+    color: #A27B5C;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size:1.2cm;
+    text-align: center;
+}
+.p3{
+    color: #A6D1E6;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    align-items: center;
+    text-align: center;    font-size:1cm;
+}
+.p33{
+    color: #ffffff;
+    font-size:1cm;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    align-items: center;
+    text-align: center;
+}
+.p333{
+    color: #DCD7C9;
+    font-size:.5cm;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    align-items: center;
+    text-align: center;
+}
+
+.ols{
+    color: #ffffff;
+    font-size:.5cm;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    align-items: center;
+    text-align: justify;
+}
+.ols2{
+    color: #ee2f0d;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: justify;
+    align-items: center;
+}
+.VIEW{
+    color: #0deebd;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    align-items: center;
+    display: inline;
+
+}
+.VIEW2{
+    color: #ee2f0d;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    align-items: center;
+    display: inline;
+
+}
+
+
+.p3333{
+    color: #25ff6e;
+    font-size:1cm;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    align-items: center;
+    text-align: center;
+}
+
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+.label {
+  color: #ffffff;
+  padding: 8px;
+  font-family: monospace;
+  font-size:25px
+}
+
+</style>
+</head>
+<body STYLE="background:#181D31">
+<div class="diccc" >
+
+
+
+  <center>
+
+<div style="top:0;width: 100%;background-color: #678983;border-top-right-radius: 30px;border-bottom-left-radius: 30px; width: 80%;padding: 30px;">
+
+ <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+<tr>
+<span class="label success" >Enter Youtube Video url</span>
+
+        <input type="text" name="Video URL" placeholder="Video URL" required="required" />
+</tr>
+        </table>
+        <br>
+        <br>
+<button id="btn" type="submit" class="btn btn-success"style="width: 400px;background:#2D033B;border-top-right-radius: 30px;border-bottom-left-radius: 30px;">Download</button>
+    </form>
+
+</div>
+
+</center>
+    <h2 class="p22" style="color:#D6EFED">{{prediction_text}}</h2>
+</div>
+</div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
